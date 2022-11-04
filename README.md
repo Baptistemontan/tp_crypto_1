@@ -14,7 +14,7 @@ the bigger the sub sequence is, the closer they are.
 ## How to install ?
 
 The programm has been entirely wrote in Rust. 
-Install the Rust compiler on your machine in order to compile it.
+Install the [Rust compiler](https://www.rust-lang.org/tools/install) on your machine in order to compile it.
 
 ## How to build ?
 
