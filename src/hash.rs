@@ -9,7 +9,7 @@ pub struct FindCycleResult {
     pub distance: usize,
     pub slow: Vec<u8>,
     pub fast: Vec<u8>,
-    pub elapsed: Duration
+    pub elapsed: Duration,
 }
 
 pub fn find_cycle<H: Digest, D: Distance>(
@@ -45,7 +45,7 @@ pub fn find_cycle<H: Digest, D: Distance>(
         distance,
         slow,
         fast,
-        elapsed
+        elapsed,
     }
 }
 

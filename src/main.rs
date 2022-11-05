@@ -17,7 +17,7 @@ fn main() -> Result<(), FromHexError> {
         distance,
         slow,
         fast,
-        elapsed
+        elapsed,
     } = args.execute()?;
 
     let slow = hex::encode(slow);

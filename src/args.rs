@@ -107,8 +107,6 @@ impl Args {
     }
 
     fn random_seed(len: usize) -> Vec<u8> {
-        std::iter::repeat_with(rand::random)
-            .take(len)
-            .collect()
+        std::iter::repeat_with(rand::random).take(len).collect()
     }
 }
