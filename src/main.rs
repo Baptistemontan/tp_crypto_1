@@ -1,5 +1,3 @@
-use std::time::Instant;
-
 mod args;
 mod distance;
 mod hash;
