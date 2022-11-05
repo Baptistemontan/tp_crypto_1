@@ -14,23 +14,20 @@ use crate::hash::FindCycleResult;
 fn main() -> Result<(), FromHexError> {
     let args = Args::parse();
 
-    let start = Instant::now();
-
     let FindCycleResult {
         iter_count,
         distance,
         slow,
         fast,
+        elapsed
     } = args.execute()?;
-
-    let elapsed = start.elapsed();
 
     let slow = hex::encode(slow);
     let fast = hex::encode(fast);
 
     println!("Found cycle: \n\t{}\n\t{}", slow, fast);
     println!("Evaluated distance: {}", distance);
-    println!("iterations: {}\nElapsed time: {:?}", iter_count, elapsed);
+    println!("iterations: {}\nExecution time: {:?}", iter_count, elapsed);
 
     Ok(())
 }

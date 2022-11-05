@@ -87,6 +87,8 @@ impl Args {
             random_size,
             hex,
         } = self;
+
+        let random_size = random_size.unwrap_or(DEFAULT_RANDOM_SEED_LEN);
         let seed = seed
             .map(|seed| {
                 if hex {
@@ -95,9 +97,9 @@ impl Args {
                     Ok(seed.as_bytes().to_vec())
                 }
             })
-            .unwrap_or_else(|| Ok(Self::random_seed(random_size.unwrap_or(DEFAULT_RANDOM_SEED_LEN))))?;
+            .unwrap_or_else(|| Ok(Self::random_seed(random_size)))?;
 
-        println!("seed: 0x{}", hex::encode(&seed));
+        println!("Initial seed: 0x{}", hex::encode(&seed));
 
         let result = distance.exec(digest, seed, limit);
 
@@ -105,9 +107,8 @@ impl Args {
     }
 
     fn random_seed(len: usize) -> Vec<u8> {
-        std::iter::repeat(())
+        std::iter::repeat_with(rand::random)
             .take(len)
-            .map(|_| rand::random())
             .collect()
     }
 }
