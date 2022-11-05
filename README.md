@@ -100,3 +100,25 @@ iterations: 61362241
 Elapsed time: 97.4512275s
 ```
 The cycle, evaluated distance and iterations are deterministic, every machine will spit out the same thing with the same arguments.
+
+# Depedencies
+
+## Digest
+
+the [digest](https://crates.io/crates/digest) describe a "standard" API for cryptographic hash functions. This API is implemented for multiple family of cryptographic algorithms, you can found a list of crates following this standard on this [github page](https://github.com/RustCrypto/hashes). This enable the code to be generic over the hash function, making addition of new hash function extremely easy.
+
+## Sha family library
+
+The library used for the Sha family is the [sha2](https://crates.io/crates/sha2) crate. (Also visible on the list mentionned above).
+
+## Hex
+
+The [hex crate](https://crates.io/crates/hex) provide utilities to parse hex strings, or convert number to an hex string.
+
+## Rand
+
+The [rand crate](https://crates.io/crates/rand) provide utilities to generate random numbers. It is probably not cryptographicly safe. It is used to generate the random default seed.
+
+## Clap
+
+The [clap crate](https://crates.io/crates/clap) allow to very easily create a CLI application.
