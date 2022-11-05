@@ -30,11 +30,15 @@ or type `cargo run -- args`.
 You can see them by passing the `-h` or `--help` flag to the program.
 Total command: `cargo run --release -- --digest <DIGEST> --distance <DISTANCE> --threshold <THRESHOLD>  [OPTIONS]`
 
-#### --digest
+#### Digest
+
+`--digest <DIGEST>            Hash function to use [possible values: sha256, sha512]`
 
 The digest argument is what hash function is used. The current choices are `sha256` and `sha512`.
 
-#### --distance
+#### Distance
+
+`--distance <DISTANCE>        Distance function to use for Floyd's algorithm [possible values: bit-diff, byte-diff, common-sub-seq]`
 
 The distance argument is what distance function is used.The possible choices are:
 
@@ -44,7 +48,9 @@ The distance argument is what distance function is used.The possible choices are
 | byte-diff         | the distance is the number of bytes different beetween 2 values             |
 | common-sub-seq    | the distance is the length of the longest subsequence common in both values |
 
-#### --threshold (-t)
+#### Threshold
+
+`-t, --threshold <THRESHOLD>      Threshold for the distance function. Smaller for stricter (0 means equal)`
 
 The threshold argument is how low has to be the distance for 2 sequence to be considered equal.
 A threshold of 0 means the 2 values has to be equals.
@@ -59,12 +65,24 @@ Each configurations as a "max" threshold, where threshold >= max will consider e
 | Sha512        | byte-diff         | 64  |
 | Sha512        | common-sub-seq    | 64  |
 
-#### --seed (-s)
+#### Seed
+
+`-s, --seed <SEED>                Optionnal seed, UTF8 by default, in hex if the hex flag is set. Will be randomly generated if none`
 
 The seed is optionnal, you can either give it in utf8 (by default) or be an hex value by putting the `--hex` flag.
-If the seed is not set, a 32 bytes random seed is generated.
+If the seed is not set, a random seed is generated.
 
-#### --hex
+#### Random Size
+
+` -r, --random-size <RANDOM_SIZE>  Optional length for the random seed, no effect if a seed is given`
+
+If the seed is not set a random seed is generated, this arguments take the size in bytes of the random seed. 
+This argument is optionnal even if the seed is not set.
+The default size if the seed and the random size is not given is 32 bytes.
+
+#### Hex flag
+
+`--hex                        Flag used to tell the seed is in hex. No effect if no seed is given`
 
 Flag to mark the seed as a Hex value. ex: `-s af5e78bc --hex`.
 
